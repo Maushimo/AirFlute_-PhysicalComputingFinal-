@@ -14,16 +14,17 @@ void setup(){
   int tempSensorVal = analogRead(tempSensorPin); 
   float tempVoltage = (tempSensorVal/1024.0) * 5.0;
   float temp = (tempVoltage - .5) * 100;
-  float values[5]; //5 values for checking average should be fine... right?
+  float tempValues[5]; //5 values for checking average should be fine... right?
 
   //for loop that equates all values in the array to temp values the sensor picks up
   for(int i = 0; i < 5; i++){
-    values[i] = temp;
+    tempValues[i] = temp;
     delay(10); //give it a bit of delay to give some time between measurements
   }
 
   //good ol' primary school maths
-  tempAverage = (values[0] + values[1] + values[2] + values[3] + values[4])/5;
+  tempAverage = (tempValues[0] + tempValues[1] + tempValues[2] + tempValues[3] + tempValues[4])/5;
+
 }
 
 void loop(){
@@ -39,8 +40,12 @@ void loop(){
   int ldr3Val = analogRead(ldrPin3);
 
   int allLdr = (ldr1Val+ldr2Val+ldr3Val);
-  
-  Serial.println(allLdr);
+
+  Serial.print(temp);
+  Serial.print(" ");
+  Serial.print(allLdr);
+  Serial.print(" ");
+  Serial.print("\r");
   delay(50);
 }
 
