@@ -617,7 +617,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 121.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "50"
+									"text" : "9"
 								}
 
 							}
@@ -718,7 +718,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 319.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "836.4"
+									"text" : "365.4"
 								}
 
 							}
