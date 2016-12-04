@@ -1,8 +1,17 @@
 /* Set analog pins */
 const int tempSensorPin = A0;
+int tempSensorVal;
+  
 const int ldrPin1 = A1;
 const int ldrPin2 = A2;
 const int ldrPin3 = A3;
+
+/* Calibration Variables */
+// variable to calibrate low value
+int tempSensorLow = 1023;
+
+// variable to calibrate high value
+int tempSensorHigh = 0;
 
 // Average temperature of the room... used in calibration
 float tempAverage;
@@ -11,29 +20,25 @@ void setup(){
   Serial.begin(9600); //Set data rate for serial
 
   /* Calibrate BLOWEY */
-  int tempSensorVal = analogRead(tempSensorPin); 
-  float tempVoltage = (tempSensorVal/1024.0) * 5.0;
-  float temp = (tempVoltage - .5) * 100;
-  float tempValues[5]; //5 values for checking average should be fine... right?
-
-  //for loop that equates all values in the array to temp values the sensor picks up
-  for(int i = 0; i < 5; i++){
-    tempValues[i] = temp;
-    delay(10); //give it a bit of delay to give some time between measurements
+  while (millis() < 5000) {
+    // record the maximum sensor value
+    tempSensorVal = analogRead(tempSensorPin);
+    if (tempSensorVal > tempSensorHigh) {
+      tempSensorHigh = tempSensorVal;
+    }
+    // record the minimum sensor value
+    if (tempSensorVal < tempSensorLow) {
+      tempSensorLow = tempSensorVal;
+    }
   }
-
-  //good ol' primary school maths
-  tempAverage = (tempValues[0] + tempValues[1] + tempValues[2] + tempValues[3] + tempValues[4])/5;
 
 }
 
 void loop(){
   /* Temperature sensor (BLOWEY) stuff */
-  int tempSensorVal = analogRead(tempSensorPin); 
-  float tempVoltage = (tempSensorVal/1024.0) * 5.0;
-  float temp = (tempVoltage - .5) * 100;
-  temp = temp - tempAverage;
-
+  tempSensorVal = analogRead(tempSensorPin);
+  int blow = map(tempSensorVal, tempSensorLow, tempSensorHigh, 0, 25);
+  
   /* LDR (HOLEY) stuff */
   int ldr1Val = analogRead(ldrPin1)*0.5;
   int ldr2Val = analogRead(ldrPin2)*1.5;
@@ -41,7 +46,7 @@ void loop(){
 
   int allLdr = (ldr1Val+ldr2Val+ldr3Val);
 
-  Serial.print(temp);
+  Serial.print(blow);
   Serial.print(" ");
   Serial.print(allLdr);
   Serial.print(" ");

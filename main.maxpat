@@ -38,6 +38,19 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 457.0, 372.0, 35.0, 22.0 ],
+					"style" : "",
+					"text" : "* 0.7"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-20",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -604,7 +617,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 121.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "2"
+									"text" : "50"
 								}
 
 							}
@@ -698,19 +711,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-42",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 383.0, 217.0, 150.0, 47.0 ],
-									"style" : "",
-									"text" : "Printing raw ascii values from \"Serial.print();\" in arduino"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-38",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -718,7 +718,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 319.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "124.8"
+									"text" : "836.4"
 								}
 
 							}
@@ -771,18 +771,6 @@
 									"patching_rect" : [ 205.0, 187.0, 59.0, 22.0 ],
 									"style" : "",
 									"text" : "sel 13 10"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-71",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 319.0, 217.0, 57.0, 22.0 ],
-									"style" : "",
-									"text" : "print raw"
 								}
 
 							}
@@ -936,16 +924,6 @@
 									"disabled" : 0,
 									"hidden" : 0,
 									"midpoints" : [ 214.5, 150.0, 214.5, 150.0 ],
-									"source" : [ "obj-5", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-71", 0 ],
-									"disabled" : 0,
-									"hidden" : 0,
-									"midpoints" : [ 214.5, 174.0, 328.5, 174.0 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -1428,8 +1406,16 @@
 					"destination" : [ "obj-50", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 99.5, 417.0, 204.0, 417.0, 204.0, 342.0, 227.5, 342.0 ],
-					"source" : [ "obj-19", 0 ]
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-18", 0 ]
 				}
 
 			}
@@ -1940,6 +1926,16 @@
 					"hidden" : 0,
 					"midpoints" : [ 594.5, 327.0, 518.5, 327.0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-52", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"midpoints" : [ 466.5, 396.0, 504.0, 396.0, 504.0, 369.0, 518.5, 369.0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
