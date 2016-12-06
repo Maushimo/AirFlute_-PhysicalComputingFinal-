@@ -14,9 +14,17 @@ int tempSensorLow = 1023;
 int tempSensorHigh = 0;
 
 /* LDR Values */
-int ldrVal;
-int ldrLow = 1024;
-int ldrHigh = 0;
+int ldr1Val;
+int ldr1Low = 1023;
+int ldr1High = 0;
+
+int ldr2Val;
+int ldr2Low = 1023;
+int ldr2High = 0;
+
+int ldr3Val;
+int ldr3Low = 1023;
+int ldr3High = 0;
 
 //Light PINs
 const int greenLEDPin = 10;
@@ -46,12 +54,28 @@ void setup() {
     }
 
     /* LDR CALIBRATION */
-    ldrVal = analogRead(ldrPin1);
-    if(ldrVal > ldrHigh){
-      ldrHigh = ldrVal;
+    ldr1Val = analogRead(ldrPin1);
+    if(ldr1Val > ldr1High){
+      ldr1High = ldr1Val;
     }
-    if(ldrVal < ldrLow){
-      ldrLow = ldrVal;
+    if(ldr1Val < ldr1Low){
+      ldr1Low = ldr1Val;
+    }
+
+    ldr2Val = analogRead(ldrPin2);
+    if(ldr2Val > ldr2High){
+      ldr2High = ldr2Val;
+    }
+    if(ldr2Val < ldr2Low){
+      ldr2Low = ldr2Val;
+    }
+
+    ldr3Val = analogRead(ldrPin3);
+    if(ldr3Val > ldr3High){
+      ldr3High = ldr3Val;
+    }
+    if(ldr3Val < ldr3Low){
+      ldr3Low = ldr3Val;
     }
     
   }
@@ -67,9 +91,9 @@ void loop() {
   int ldr2Val = analogRead(ldrPin2);
   int ldr3Val = analogRead(ldrPin3);
 
-  int note1 = (map(ldr1Val, ldrLow, ldrHigh, 50, 100))*2;
-  int note2 = (map(ldr2Val, ldrLow, ldrHigh, 50, 100));
-  int note3 = (map(ldr3Val, ldrLow, ldrHigh, 50, 100))*4;
+  int note1 = (map(ldr1Val, ldr1Low, ldr1High, 50, 100))*0.5;
+  int note2 = (map(ldr2Val, ldr2Low, ldr2High, 50, 100));
+  int note3 = (map(ldr3Val, ldr3Low, ldr3High, 50, 100))*1.5;
 
   //combined value used to pass in frequency data to max
   int allLdr = (note1 + note2 + note3);
@@ -91,7 +115,7 @@ void loop() {
 
   Serial.print(blow);
   Serial.print(" ");
-  Serial.print(allLdr);
+  Serial.print(abs(allLdr));
   Serial.print(" ");
   Serial.print("\r");
   delay(50);

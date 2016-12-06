@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 65.0, 111.0, 1153.0, 853.0 ],
+		"rect" : [ 65.0, 111.0, 1083.0, 853.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,27 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bgmode" : 1,
+					"border" : 1,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"id" : "obj-61",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "komp.maxpat",
+					"numinlets" : 10,
+					"numoutlets" : 2,
+					"offset" : [ -280.0, -72.0 ],
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 106.0, 536.0, 330.0, 121.0 ],
+					"varname" : "komp-regular",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -45,7 +66,7 @@
 					"outlettype" : [ "float" ],
 					"patching_rect" : [ 457.0, 376.0, 35.0, 22.0 ],
 					"style" : "",
-					"text" : "* 0.9"
+					"text" : "* 0.7"
 				}
 
 			}
@@ -508,7 +529,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 243.5, 530.0, 126.0, 22.0 ],
+					"patching_rect" : [ 243.5, 673.0, 126.0, 22.0 ],
 					"style" : "",
 					"text" : "send~ rawSineWaves"
 				}
@@ -558,7 +579,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 846.0, 802.0, 37.0, 22.0 ],
+					"patching_rect" : [ 846.0, 819.0, 37.0, 22.0 ],
 					"style" : "",
 					"text" : "dac~"
 				}
@@ -617,7 +638,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 121.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "0"
+									"text" : "83"
 								}
 
 							}
@@ -718,7 +739,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 319.0, 440.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "420."
+									"text" : "134.4"
 								}
 
 							}
@@ -1801,6 +1822,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-61", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1841,10 +1871,10 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
+					"destination" : [ "obj-61", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
-					"midpoints" : [ 253.0, 522.0, 253.0, 522.0 ],
+					"midpoints" : [ 253.0, 522.0, 115.5, 522.0 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -1943,6 +1973,18 @@
 		"dependency_cache" : [ 			{
 				"name" : "yafr2.maxpat",
 				"bootpath" : "/Users/Shared/Max 7/Examples/effects/reverb/lib",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "komp.maxpat",
+				"bootpath" : "/Users/Shared/Max 7/Examples/effects/kompressor/lib",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "komp-ballistics.maxpat",
+				"bootpath" : "/Users/Shared/Max 7/Examples/effects/kompressor/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
