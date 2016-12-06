@@ -105,8 +105,11 @@ void loop() {
 
   //LED values
   int blueLedVal = (ldr1Val/2)+redBrightness;
+  delay(10);
   int greenLedVal = (ldr2Val/2)+greenBrightness;
+  delay(10);
   int redLedVal = (ldr3Val/2)+blueBrightness;
+  delay(10);
 
   //Write values to LEDs
   analogWrite(redLEDPin, redLedVal);
